@@ -1,0 +1,30 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>문제은행</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<style>
+body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:12px;color:#222}
+section{border:1px solid #ddd;border-radius:10px;padding:12px;margin:12px 0}
+input,select,button{font-size:16px;padding:8px;margin:4px 0;width:100%;box-sizing:border-box}
+button{background:#2b6cb0;color:#fff;border:0;border-radius:8px}
+#msg{color:#b00;white-space:pre-wrap}.row{display:flex;gap:8px}
+</style></head><body>
+<h2>문제은행</h2><div id="msg"></div>
+<section id="auth">
+  <input id="email" type="email" placeholder="이메일"><input id="pw" type="password" placeholder="비밀번호">
+  <div class="row"><button onclick="login()">로그인</button><button onclick="signup()">회원가입</button></div>
+</section>
+<div id="app" hidden>
+  <section><b id="me"></b> <button onclick="logout()" style="width:auto;float:right">로그아웃</button></section>
+  <section><h3>PDF 업로드</h3>
+    <input id="title" placeholder="제목 (예: 2024 1학기 중간)">
+    <select id="subj" onchange="loadUnits()"></select><input id="grade" type="number" placeholder="학년" value="1">
+    문제 PDF <input id="qf" type="file" accept=".pdf"> 답지 PDF <input id="af" type="file" accept=".pdf">
+    <button onclick="upload()">업로드 · 문제 분할</button></section>
+  <section><h3>문제지 만들기</h3>
+    <input id="etitle" placeholder="문제지 제목"><div id="units"></div>
+    <input id="count" type="number" value="20" placeholder="문항 수">
+    <label><input type="checkbox" id="vari" style="width:auto"> 변형 문제 포함</label>
+    <button onclick="build()">문제지 생성</button><div id="result"></div></section>
+</div>
+<script src="app.js"></script></body></html>
